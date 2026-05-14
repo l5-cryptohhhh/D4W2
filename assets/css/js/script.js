@@ -1,116 +1,198 @@
-function sum() {
-    let a = 2;
-    let b = 3;
+/*
+REGOLE
+- Le risposte vanno scritte in JavaScript sotto ogni commento.
+- Puoi testare aprendo index.html nel browser e guardando la console (DevTools).
+- Cerca solo cose non viste a lezione. Tutto il necessario è già stato spiegato stamattina.
+*/
+
+
+/* ESERCIZIO 1 — area
+   Funzione area(l1, l2) che ritorna l1 * l2.
+   Stampa area(3, 4).
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+function area(l1, l2) {
+    return l1 * l2;
+}
+
+console.log(area(4, 5));
+
+
+/* ESERCIZIO 2 — sommaPazza
+   Funzione sommaPazza(a, b): ritorna a + b.
+   Se a === b: ritorna (a + b) * 3.
+   Prova con (2, 3) e (4, 4).
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+function sommaPazza(a, b) {
+    if (a === b) {
+        return (a + b) * 3;
+    }
     return a + b;
 }
+console.log(sommaPazza(2, 3));
+console.log(sommaPazza(4, 4));
 
 
-function newSum() {
-    let a = 5;
-    return a + sum();
-}
+/* ESERCIZIO 3 — distanzaDa19
+   Funzione distanzaDa19(n): ritorna Math.abs(n - 19).
+   Se n > 19: ritorna distanza * 3.
+   Prova con 5 e 25.
+*/
 
-
-console.log(newSum());
-
-const moltiplicazione = function(num1, num2) {
-    return num1 * num2;
-}
-
-console.log(moltiplicazione(3, 7));
-console.log(moltiplicazione(4, 5));
-console.log(moltiplicazione(2, 8));
-
-
-
-const regard = function(name = 'Non so chi salutare') {
-      print(name);
+/* SCRIVI QUI LA TUA RISPOSTA */
+function distanzaDa19(n) {
+    const distanza = Math.abs(n - 19);
+    if (n > 19) {
+        return distanza * 3;
     }
-        
-    
+    return distanza;
+}
 
-const checkError = function(name) {
-    if (name === 'Non so chi salutare') {
-        return false;
-    } 
+console.log(distanzaDa19(5));
+console.log(distanzaDa19(25));
+
+
+/* ESERCIZIO 4 — dentroIntervallo
+   Funzione dentroIntervallo(n):
+   true se n è tra 20 e 100 (compresi) oppure è esattamente 400.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+function dentroIntervallo(n) {
+    if (n <= 100 && n >= 20) {
+        return true
+    } if (n === 400) {
         return true;
     }
+    return false;
+}
 
+console.log(dentroIntervallo(400));
 
+/* ESERCIZIO 5 — epify
+   Funzione epify(testo): aggiunge "EPICODE " davanti.
+   Se il testo comincia già con "EPICODE", lo lascia invariato.
+   Usa startsWith.
+*/
 
-const print = function(name) {
-    if (checkError(name)) {
-        document.getElementById('saluta').textContent += name;
-    } else {
-        document.getElementById('saluta').textContent = name;
+/* SCRIVI QUI LA TUA RISPOSTA */
+function epify(testo) {
+    if (testo.startsWith('EPICODE')) {
+        return testo;
     }
+    return 'EPICODE' + testo;
 }
 
-regard(' Manuel');
+console.log(epify(' Mi chiamo Manuel'));
 
 
-const listElements = document.querySelectorAll('#firstlist li');
-console.log(listElements);
+/* ESERCIZIO 6 — divisibilePer3o7
+   Funzione divisibilePer3o7(n): true se n positivo E divisibile per 3 O per 7.
+*/
 
-
-const colorElements = function () {
-    for (let i = 0; i < listElements.length; i++) {
-    listElements[i].classList.add('listElements');
-}
-}
-colorElements();
-
-function creaContatote() {
-    let count = 0;
-    let increment = 1;
-    return function () {
-        count++;
-        increment = increment * 2;
-        return `Il valore di count ${count}, il valore di increment ${increment}`;
-    };
+/* SCRIVI QUI LA TUA RISPOSTA */
+function divisibilePer3o7(n) {
+    if (n > 0 && (n % 3 === 0 || n % 7 === 0)) {
+        return true;
+    }
+    return false;
 }
 
-const contatore = creaContatote();
-const count = document.querySelectorAll('#count');
+console.log(divisibilePer3o7(21));
 
-for (let i = 0; i < 8; i++) {
-    count.innerHTML += `<li>${contatore()}<li>`;
+
+/* ESERCIZIO 7 — invertiStringa
+   Funzione invertiStringa(testo): ritorna la stringa invertita.
+   Vincolo: niente .reverse() di array.
+   Suggerimento: split("") + for al contrario + join("").
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+function invertiStringa(testo) {
+    const lettere = testo.split('');
+    const invertite = [];
+
+    for (let i = lettere.length - 1; i >= 0; i--) {
+        invertite.push(lettere[i]);
+    }
+    return invertite.join(" ");
+} 
+console.log(invertiStringa('Mi chiamo Manuel'));
+
+
+/* ESERCIZIO 8 — inizialiMaiuscole
+   Funzione inizialiMaiuscole(frase): metti in maiuscolo la prima lettera di ogni parola.
+   "ciao mondo" → "Ciao Mondo".
+   Suggerimento: split(" ") + for + slice(0,1).toUpperCase() + slice(1) + join(" ").
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+function inizialiMaiuscole(frase) {
+    const parole = frase.split(" ");
+    const postParole = [];
+
+    for (let i = 0; i < parole.length; i++) {
+        const parola = parole[i].slice(0, 1).toUpperCase() + parole[i].slice(1);
+        postParole.push(parola);
+    }
+    return postParole.join(" ");
 }
 
-let myName = 'Manuel Nunziata';
-console.log(myName.includes('Nunziata'));
-console.log(myName.includes('Leo'));
-console.log(myName.slice(6, 10));
-console.log(myName.slice(6));
+console.log(inizialiMaiuscole('Mi chiamo Manuel'));
 
 
-const myNameArray = myName.split(' ');
-console.table(myNameArray);
+/* ESERCIZIO 9 — togliPrimoEUltimo
+   Funzione togliPrimoEUltimo(testo): rimuovi primo e ultimo carattere.
+   Usa slice. Prova con "EPICODE".
+*/
 
-let myNameJoined = myNameArray.join().replaceAll(',', ' ');
-console.log(myNameJoined);
+/* SCRIVI QUI LA TUA RISPOSTA */
+function togliPrimoEUltimo(testo) {
+    return testo.slice(1, testo.length - 1);
+}
 
-const today = new Date();
-console.log(today);
-
-
-const myBirthday = new Date(2004, 7, 3);
-console.log(myBirthday);
-
-let myAbs = Math.abs(3.15);
-console.log(myAbs);
-
-let myMaxNumber = Math.max(12, 21, 3);
-console.log(myMaxNumber);
-
-let myCasualNumber = Math.floor(Math.random() * 11);
-console.log(myCasualNumber);
+console.log(togliPrimoEUltimo('EPICODE'));
 
 
+/* ESERCIZIO 10 — dammiCasuali
+   Funzione dammiCasuali(n): ritorna un array di n numeri interi casuali tra 0 e 10 (inclusi).
+   Usa Math.random e Math.floor.
+*/
 
+/* SCRIVI QUI LA TUA RISPOSTA */
+function dammiCasuali(n) {
+    const risultato = [];
 
+    for (let i = 0; i < n; i++) {
+        let casuale = Math.floor(Math.random() * 11);
+        risultato.push(casuale);
+    }
+    return risultato;
+}
+ 
+console.log(dammiCasuali(5));
 
+/* --EXTRA-- ESERCIZIO 11 — etaInGiorni
+   Funzione etaInGiorni(annoNascita, meseNascita, giornoNascita).
+   Ritorna l'età in giorni rispetto a oggi.
+   - new Date() per oggi
+   - new Date(anno, mese - 1, giorno) per la nascita (mese 0-based!)
+   - oggi - nascita = millisecondi
+   - dividi per 1000 * 60 * 60 * 24 e Math.floor per i giorni interi
+   Stampa: "Hai X giorni!"
+*/
 
+/* SCRIVI QUI LA TUA RISPOSTA */
+function etaInGiorni(annoNascita, meseNascita, giornoNAscita) {
+    const oggi = new Date();
+    const nascita = new Date(annoNascita, meseNascita - 1, giornoNAscita);
 
+    const differenza = oggi - nascita;
+    const giorni = Math.floor(differenza / (1000 * 60 * 60 * 24));
 
-
+    return 'Hai ' + giorni + ' giorni!';
+}
+console.log(etaInGiorni(2004, 8, 3));
